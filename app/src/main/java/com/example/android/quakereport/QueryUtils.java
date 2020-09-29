@@ -6,7 +6,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Helper methods related to requesting and receiving earthquake data from USGS.
@@ -59,13 +61,23 @@ public final class QueryUtils {
 
                 JSONObject properties = currentEarthquake.getJSONObject("properties");
 
-                String mag= properties.getString("mag");
+                double mag= properties.getDouble("mag");
 
                 String loc= properties.getString("place");
 
                 String time= properties.getString("time");
 
-                Earthquake earthquake=new Earthquake(mag, loc, time);
+                long timeinmili = Long.parseLong(time);
+//
+//                Date dateObj = new Date(timeinmili);
+//
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("MMM DD, yyyy");
+//
+//                String date = dateFormat.format(dateObj);
+
+                String url = properties.getString("url");
+
+                Earthquake earthquake=new Earthquake(mag, loc, timeinmili, url);
 
                 earthquakes.add(earthquake);
 
