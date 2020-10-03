@@ -6,14 +6,14 @@ public class Earthquake {
 
     private String mLoc;
 
-    private long mTimeInMilliseconds;
+    private long mTime;
 
     String mUrl;
 
-    public Earthquake(double mag, String loc, long TimeInMilliseconds, String url){
+    public Earthquake(double mag, String loc, long Time, String url){
         mMag=mag;
         mLoc=loc;
-        mTimeInMilliseconds=TimeInMilliseconds;
+        mTime=Time;
         mUrl=url;
     }
 
@@ -26,7 +26,7 @@ public class Earthquake {
     }
 
     public long getTimeInMilliseconds() {
-        return mTimeInMilliseconds;
+        return mTime;
     }
 
     public String getmUrl() {
